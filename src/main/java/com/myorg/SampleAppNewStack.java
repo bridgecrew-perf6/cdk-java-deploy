@@ -21,8 +21,8 @@ public class SampleAppNewStack extends Stack {
                 .build();
 
         final Topic topic = Topic.Builder.create(this, "SampleAppNewTopic")
-            .displayName("My First Topic Yeah")
-            .build();
+                .displayName("My Last Topic Yeah")
+                .build();
 
         topic.addSubscription(new SqsSubscription(queue));
     }
