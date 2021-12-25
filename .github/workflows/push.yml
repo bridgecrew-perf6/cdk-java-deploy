@@ -27,5 +27,5 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
-      - name: CDK synth
-        run: cdk synth
+      - name: CDK deploy
+        run: cdk deploy --require-approval=never
