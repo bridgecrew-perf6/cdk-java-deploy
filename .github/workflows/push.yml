@@ -5,20 +5,19 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
+    env: 
+      CDK_DEPLOY_REGION: "${{ github.ref == 'refs/heads/master' && 'eu-west-1' || 'eu-central-1' }}"
+      CDK_DEPLOY_STACK_NAME: "${{ github.ref == 'refs/heads/master' && 'Prod' || 'Dev' }}"
+      CDK_DEPLOY_ACCOUNT: 601912882130
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 14.x
       - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
           distribution: adopt
           java-version: 11
           cache: 'maven'
-      - name: Build
-        run: mvn compile -B
-
+      
       - name: install aws cdk
         run: "sudo npm install -g aws-cdk"
 
@@ -28,6 +27,9 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-region: ${{ secrets.AWS_REGION }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      
+      - name: display info
+        run: echo "deploy to region ${CDK_DEPLOY_REGION}"
 
       - name: CDK deploy
         run: cdk deploy --require-approval=never
