@@ -1,12 +1,13 @@
 package com.myorg;
 
-import software.constructs.Construct;
 import software.amazon.awscdk.Duration;
 import software.amazon.awscdk.Stack;
 import software.amazon.awscdk.StackProps;
+import software.amazon.awscdk.services.s3.Bucket;
 import software.amazon.awscdk.services.sns.Topic;
 import software.amazon.awscdk.services.sns.subscriptions.SqsSubscription;
 import software.amazon.awscdk.services.sqs.Queue;
+import software.constructs.Construct;
 
 public class SampleAppNewStack extends Stack {
     public SampleAppNewStack(final Construct parent, final String id) {
@@ -25,5 +26,9 @@ public class SampleAppNewStack extends Stack {
                 .build();
 
         topic.addSubscription(new SqsSubscription(queue));
+
+        Bucket.Builder.create(this, "SampleAppNew Bucket")
+            .versioned(true)
+            .build();
     }
 }
