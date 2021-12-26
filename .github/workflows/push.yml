@@ -29,7 +29,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       
       - name: display info
-        run: echo "deploy to region $CDK_DEPLOY_REGION"
+        run: echo "deploy to region ${CDK_DEPLOY_REGION}"
 
       - name: CDK deploy
         run: cdk deploy --require-approval=never
