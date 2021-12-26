@@ -6,9 +6,9 @@ jobs:
     name: Diff
     runs-on: ubuntu-latest
     env: 
-      CDK_DEPLOY_REGION: eu-west-1
+      CDK_DEPLOY_REGION: eu-central-1
       CDK_DEPLOY_STACK_NAME: Prod
-      CDK_DEPLOY_ACCOUNT: 601912882130
+      CDK_DEPLOY_ACCOUNT: 915661505220
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 11

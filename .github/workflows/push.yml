@@ -6,10 +6,9 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     env: 
-      CDK_DEPLOY_REGION: "${{ github.ref == 'refs/heads/main' && 'eu-west-1' || 'eu-central-1' }}"
+      CDK_DEPLOY_REGION: eu-central-1
       CDK_DEPLOY_STACK_NAME: "${{ github.ref == 'refs/heads/main' && 'Prod' || 'Dev' }}"
-      #CDK_DEPLOY_ACCOUNT: 601912882130
-      CDK_DEPLOY_ACCOUNT: 915661505220
+      CDK_DEPLOY_ACCOUNT: "${{ github.ref == 'refs/heads/main' && '915661505220' || '601912882130' }}"
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 11
