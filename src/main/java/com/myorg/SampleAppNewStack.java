@@ -28,7 +28,7 @@ public class SampleAppNewStack extends Stack {
         topic.addSubscription(new SqsSubscription(queue));
 
         Bucket.Builder.create(this, "SampleAppNew Bucket")
-            .bucketName("sample-app-bucket")
+            .versioned(true)
             .build();
     }
 }
