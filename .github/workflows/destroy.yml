@@ -29,4 +29,4 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       
       - name: CDK destroy
-        run: cdk destroy --require-approval=never
+        run: cdk destroy --force
